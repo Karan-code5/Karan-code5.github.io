@@ -2,8 +2,9 @@
   "name": "portfolio-mern",
   "version": "1.0.0",
   "scripts": {
-    "start:backend": "cd backend && node server.js",
-    "start:frontend": "cd frontend && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && node server.js",
     "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
   },
   "devDependencies": {
