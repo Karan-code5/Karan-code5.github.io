@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Experience from './components/Experience';
@@ -7,6 +6,7 @@ import Projects from './components/Projects';
 import SkillsAndCerts from './components/SkillsAndCerts';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { portfolioData } from './data';
 import './App.css';
 
 const App = () => {
@@ -14,18 +14,9 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Using relative URL to leverage the Vite proxy
-        const response = await axios.get('/api/portfolio');
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching portfolio data", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+    // Direct data load for seamless GitHub hosting
+    setData(portfolioData);
+    setLoading(false);
   }, []);
 
   if (loading) return <div className="loading">INITIALIZING SYSTEM...</div>;
