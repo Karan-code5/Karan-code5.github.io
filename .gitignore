@@ -1,0 +1,9 @@
+node_modules
+.env
+frontend/dist
+backend/node_modules
+frontend/node_modules
+.DS_Store
+*.log
+.gemini/
+PROJECT_DETAILS.md
