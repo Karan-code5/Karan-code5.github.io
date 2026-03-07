@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { portfolioData } = require('./data');
 require('dotenv').config();
 
@@ -9,8 +10,17 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// API Route
 app.get('/api/portfolio', (req, res) => {
   res.json(portfolioData);
+});
+
+// Serve Static Frontend Files
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Catch-all route to serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 app.listen(PORT, () => {
