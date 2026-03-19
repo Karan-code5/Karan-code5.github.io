@@ -5,6 +5,7 @@ const portfolioData = {
     phone: "+91-9157786995",
     linkedin: "https://www.linkedin.com/in/karan-panchal-b03863301/", 
     profileImage: "/images/profile.jpg", // Using lowercase jpg for maximum compatibility
+    totalExperience: "1+ YEAR EXPERIENCE",
     specialInterests: ["Sketch", "Realistic Portraits"]
   },
   skills: {

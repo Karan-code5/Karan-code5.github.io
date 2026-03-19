@@ -168,28 +168,25 @@ h2::before {
   100% { top: 100%; }
 }
 
-.profile-frame::before {
-  content: "";
-  position: absolute;
-  top: -25px;
-  left: 0;
-  font-size: 0.7rem;
-  color: var(--primary-color);
-}
-
 .status-tag {
   background: rgba(16, 185, 129, 0.1);
   color: var(--primary-color);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border: 1px solid var(--primary-color);
   width: fit-content;
+  max-width: 100%;
   font-size: 0.75rem;
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+  text-align: center;
 }
 
 .big-heading {
-  font-size: 4.5rem;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 800;
   margin-bottom: 0.5rem;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
@@ -199,19 +196,25 @@ h2::before {
 }
 
 .sub-heading {
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: var(--text-dim);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .terminal-box {
   background: #000;
-  padding: 2rem;
+  padding: 1.5rem;
   border-left: 4px solid var(--primary-color);
   max-width: 900px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-main);
   box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  margin-bottom: 0;
+}
+
+.bio {
+  margin: 1rem 0;
+  line-height: 1.5;
 }
 
 /* Dashboard Grid */
@@ -450,17 +453,19 @@ footer {
     gap: 3rem;
   }
   .hero-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
     gap: 3rem;
+    padding: 60px 0;
   }
-  .big-heading { font-size: 3.5rem; }
-  .terminal-box { margin: 0 auto; }
+  .status-tag { margin: 0 auto 1.5rem auto; }
+  .terminal-box { margin: 0 auto; text-align: left; }
 }
 
 @media (max-width: 768px) {
-  .container { padding: 0 1.5rem; }
-  .big-heading { font-size: 2.5rem; }
-  .sub-heading { font-size: 1.3rem; }
+  .container { padding: 0 1.2rem; }
+  .hero-container { gap: 2rem; }
+  .profile-frame { flex: 0 0 280px; width: 280px; margin: 0 auto; }
   .signal-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; } /* Optional: Hide nav links on mobile for cleaner look */
 }
