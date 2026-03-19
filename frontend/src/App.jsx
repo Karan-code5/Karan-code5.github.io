@@ -4,7 +4,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import SkillsAndCerts from './components/SkillsAndCerts';
+import Skills from './components/Skills';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
@@ -45,11 +46,18 @@ const App = () => {
         <div className="dashboard-grid">
           <div className="main-col">
             <Experience workExperience={workExperience} />
+          </div>
+          <div className="side-col">
+            <Skills skills={skills} profile={profile} />
+          </div>
+        </div>
+
+        <div className="intel-row">
+          <div className="main-col">
             <Projects projects={projects} />
           </div>
-
           <div className="side-col">
-            <SkillsAndCerts skills={skills} profile={profile} certifications={certifications} />
+            <Certifications certifications={certifications} />
           </div>
         </div>
 
