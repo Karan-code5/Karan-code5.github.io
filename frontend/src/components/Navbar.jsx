@@ -1,18 +1,34 @@
-import React from 'react';
-import { Shield } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 
-const Navbar = ({ name }) => (
-  <nav className="navbar">
-    <div className="container nav-content">
-      <div className="logo"><Shield size={20} /> {name}</div>
-      <div className="nav-links">
-        <a href="#deployment">Deployment</a>
-        <a href="#arsenal">Arsenal</a>
-        <a href="#intelligence">Intelligence</a>
-        <a href="#contact">Signal</a>
+const Navbar = ({ name }) => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}`} aria-label="Main navigation">
+      <div className="container">
+        <div className="nav-inner">
+          <a href="#identity" className="nav-logo" id="nav-logo">
+            {name}
+          </a>
+
+          <ul className="nav-links">
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#progress">Progress</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact" className="nav-cta" id="nav-contact-btn">Contact</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 export default Navbar;

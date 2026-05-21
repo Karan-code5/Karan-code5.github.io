@@ -1,42 +1,55 @@
 import React from 'react';
-import { Mail, Phone, Linkedin, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Linkedin, ArrowRight } from 'lucide-react';
 
 const Contact = ({ profile }) => (
-  <section id="contact">
-    <div className="section-header" style={{textAlign: 'center', marginBottom: '3rem'}}>
-      <h2>Establish Signal</h2>
-      <p style={{color: '#94a3b8', fontSize: '0.9rem'}}>DIRECT_COMMUNICATION_LINE_ESTABLISHED</p>
-    </div>
+  <div className="contact-grid">
+    <a
+      href={`mailto:${profile.email}`}
+      className="contact-card animate-on-scroll"
+      id="contact-email"
+    >
+      <div className="contact-icon" aria-hidden="true">
+        <Mail size={22} />
+      </div>
+      <div className="contact-info">
+        <div className="contact-label">Email</div>
+        <div className="contact-value">{profile.email}</div>
+      </div>
+      <ArrowRight size={18} className="contact-arrow" aria-hidden="true" />
+    </a>
 
-    <div className="signal-grid">
-      <a href={`mailto:${profile.email}`} className="signal-card">
-        <div className="signal-icon"><Mail size={24} /></div>
-        <div className="signal-info">
-          <span className="signal-label">SECURE_EMAIL</span>
-          <span className="signal-value">{profile.email}</span>
-        </div>
-        <ExternalLink size={14} className="signal-arrow" />
-      </a>
+    <a
+      href={`tel:${profile.phone}`}
+      className="contact-card animate-on-scroll d1"
+      id="contact-phone"
+    >
+      <div className="contact-icon" aria-hidden="true">
+        <Phone size={22} />
+      </div>
+      <div className="contact-info">
+        <div className="contact-label">Phone</div>
+        <div className="contact-value">{profile.phone}</div>
+      </div>
+      <ArrowRight size={18} className="contact-arrow" aria-hidden="true" />
+    </a>
 
-      <a href={`tel:${profile.phone}`} className="signal-card">
-        <div className="signal-icon"><Phone size={24} /></div>
-        <div className="signal-info">
-          <span className="signal-label">ENCRYPTED_VOICE</span>
-          <span className="signal-value">{profile.phone}</span>
-        </div>
-        <ExternalLink size={14} className="signal-arrow" />
-      </a>
-
-      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="signal-card">
-        <div className="signal-icon"><Linkedin size={24} /></div>
-        <div className="signal-info">
-          <span className="signal-label">PROFESSIONAL_NET</span>
-          <span className="signal-value">LINKEDIN_PROFILE</span>
-        </div>
-        <ExternalLink size={14} className="signal-arrow" />
-      </a>
-    </div>
-  </section>
+    <a
+      href={profile.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="contact-card animate-on-scroll d2"
+      id="contact-linkedin"
+    >
+      <div className="contact-icon" aria-hidden="true">
+        <Linkedin size={22} />
+      </div>
+      <div className="contact-info">
+        <div className="contact-label">LinkedIn</div>
+        <div className="contact-value">View Profile</div>
+      </div>
+      <ArrowRight size={18} className="contact-arrow" aria-hidden="true" />
+    </a>
+  </div>
 );
 
 export default Contact;

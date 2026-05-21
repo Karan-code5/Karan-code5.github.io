@@ -1,22 +1,32 @@
 import React from 'react';
-import { Activity } from 'lucide-react';
 
 const Experience = ({ workExperience }) => (
-  <section id="deployment">
-    <h2><Activity /> Deployment History</h2>
+  <div className="timeline" id="timeline">
     {workExperience.map((exp, index) => (
-      <div key={index} className="experience-item">
-        <div className="exp-header">
-          <h3>{exp.role}</h3>
-          <p className="highlight">{exp.company}</p>
-          <span className="duration">{exp.duration}</span>
+      <div key={index} className="timeline-item animate-on-scroll">
+        <div className={`timeline-node ${index === 0 ? 'active' : ''}`} aria-hidden="true" />
+
+        <div className="exp-card">
+          <div className="exp-company">{exp.company}</div>
+          <div className="exp-role">{exp.role}</div>
+
+          <div className="exp-meta">
+            <span className="badge badge-type">{exp.type}</span>
+            <span className="badge badge-dur">{exp.duration}</span>
+            {index === 0 && (
+              <span className="badge badge-green">● ACTIVE</span>
+            )}
+          </div>
+
+          <ul className="exp-highlights" aria-label="Key contributions">
+            {exp.highlights.map((h, i) => (
+              <li key={i}>{h}</li>
+            ))}
+          </ul>
         </div>
-        <ul className="exp-highlights">
-          {exp.highlights.map((h, i) => <li key={i}>{h}</li>)}
-        </ul>
       </div>
     ))}
-  </section>
+  </div>
 );
 
 export default Experience;

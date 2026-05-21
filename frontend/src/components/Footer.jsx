@@ -1,8 +1,13 @@
 import React from 'react';
 
 const Footer = ({ name }) => (
-  <footer>
-    <p>SYSTEM_v1.0 // ENGINEER: {name ? name.toUpperCase().replace(' ', '_') : 'UNKNOWN'} // ENCRYPTED_TRANSMISSION_ONLY</p>
+  <footer className="footer" role="contentinfo">
+    <div className="container">
+      <div className="footer-logo">{name}</div>
+      <p className="footer-copy">
+        Designed &amp; built with precision · {new Date().getFullYear()}
+      </p>
+    </div>
   </footer>
 );
 

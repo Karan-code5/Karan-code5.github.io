@@ -1,18 +1,25 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 const Certifications = ({ certifications }) => (
-  <section id="certification">
-    <h2><ExternalLink size={18} /> Credentials</h2>
-    <div className="cert-grid">
-      {certifications.map((c, i) => (
-        <div key={i} className="cert-card">
-          <span className="cert-tag">[CERT_VERIFIED]</span>
-          <p className="cert-name">{c}</p>
+  <div className="certs-grid">
+    {certifications.map((cert, idx) => (
+      <div
+        key={idx}
+        className="cert-card animate-on-scroll"
+        id={`cert-${idx}`}
+        style={{ transitionDelay: `${idx * 0.08}s` }}
+      >
+        <div className="cert-icon" aria-hidden="true">
+          <Award size={18} />
         </div>
-      ))}
-    </div>
-  </section>
+        <div>
+          <div className="cert-num">CERT_{String(idx + 1).padStart(2, '0')}</div>
+          <div className="cert-name">{cert}</div>
+        </div>
+      </div>
+    ))}
+  </div>
 );
 
 export default Certifications;
