@@ -58,8 +58,12 @@ const Hero = ({ profile }) => {
               <div className="hero-photo-inner">
                 <img
                   src={profilePhoto}
-                  alt={profile.name}
+                  alt="Karan Panchal - Security Engineer"
                   className="hero-photo"
+                  loading="eager"
+                  fetchpriority="high"
+                  width="320"
+                  height="320"
                   onError={(e) => {
                     e.target.src = profile.profileImage;
                   }}
