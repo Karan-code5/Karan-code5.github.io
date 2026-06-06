@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { portfolioData } from './data';
 import useScrollAnimation from './hooks/useScrollAnimation';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,42 +15,7 @@ import Footer from './components/Footer';
 import './App.css';
 
 const App = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
   useScrollAnimation();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/portfolio');
-        setData(response.data);
-      } catch (error) {
-        console.error('Error fetching portfolio data', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        <div className="loading-ring" />
-        <span className="loading-text">Initializing...</span>
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div className="loading-screen">
-        <span className="loading-text" style={{ color: 'var(--red)' }}>
-          Failed to load data.
-        </span>
-      </div>
-    );
-  }
 
   const {
     profile,
@@ -61,7 +26,7 @@ const App = () => {
     notableHighlights,
     projects,
     certifications,
-  } = data;
+  } = portfolioData;
 
   return (
     <div>
