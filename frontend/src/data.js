@@ -129,7 +129,7 @@ export const portfolioData = {
       ]
     },
     {
-      category: "Vikings / Ruby",
+      category: "Threat Intelligence",
       color: "#f472b6",
       phases: [
         { name: "Vikings Knowledge Transfer", tech: "Ruby, Project KT", level: "Intermediate", outcome: "Rapidly onboarded to Vikings project enabling immediate contribution" },
